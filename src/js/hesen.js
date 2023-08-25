@@ -294,24 +294,74 @@ cixis.addEventListener('click', function (e) {
 
 let muveqqetibaza2 = []
 document.addEventListener('click', function (e) {
+    let icaze = true
     if (e.target.classList.contains("delete_two")) {
         let index = e.target.dataset.id2
+
+
         for (let i = 0; i < all.length; i++) {
             if (i == index) {
-                muveqqetibaza2.push(all[i])
+                for (let j = 0; j < muveqqetibaza2.length; j++) {
+                    if (all[i].img == muveqqetibaza2[j].img && all[i].title == muveqqetibaza2[j].title && all[i].author == muveqqetibaza2[j].author) {
+                        icaze = false
+                        let silinsin = []
+                        for (let k = 0; k < muveqqetibaza2.length; k++){
+                            if(k != j){
+                                silinsin.push(muveqqetibaza2[k])
+                            }
+                        }
+                        muveqqetibaza2 = silinsin
+                    }
+
+
+                }
+
             }
         }
 
-        // for (let i = 0; i < all.length; i++) {
-        //     if (i == index) {
-        //         for (let j = 0; j < muveqqetibaza2.length; j++){
-        //             if(all[i].img == muveqqetibaza2[j].img && all[i].title == muveqqetibaza2[j].title && all[i].author == muveqqetibaza2[j].author){
-        //                 muveqqetibaza2.push(all[i])
-        //             }
+        if (icaze == true) {
+            for (let i = 0; i < all.length; i++) {
+                if (i == index) {
+                    muveqqetibaza2.push(all[i])
+
+                }
+            }
+        }
+
+
+        // daxilEt.addEventListener('click', function () {
+        //     let yoxlama = true
+        //     for (let i = 0; i < all.length; i++) {
+        //         if (input1.value == all[i].img && input2.value == all[i].title && input3.value == all[i].author) {
+        //             alert("Belə bir kitab artıq mövcuddur!!!")
+        //             yoxlama = false
         //         }
-               
         //     }
-        // }
+        //     if (yoxlama == true && input1.value !== "" && input2.value !== "" && input3.value !== "") {
+        //         elaveOlunanYer.innerHTML = []
+        //         let elaveEdilen = {
+        //             img: input1.value,
+        //             title: input2.value,
+        //             author: input3.value
+        //         }
+        //         all.unshift(elaveEdilen);
+        //         for (let i = 0; i < all.length; i++) {
+
+        //             elaveOlunanYer.innerHTML +=
+        //                 `
+        //         <div id="box1" class="box">
+        //             <img class="bookPhoto" src="${all[i].img}" alt="">
+        //             <h1 class="title">${all[i].title}</h1>
+        //             <p class="author">${all[i].author}</p>
+        //             <div class="section1_main_box_right_down">
+        //             <i id="sebeteElaveEt" data-id2="${i}" class="fa-solid fa-heart delete_two"></i>
+        //                 <i id="delete" data-id="${i}" class="fa-regular fa-trash-can delete_one"></i>
+        //             </div>
+        //         </div>
+        //     `
+        //         }
+        //         Yaddasaxla("all", all)
+        //     }
         elaveOlundu.innerHTML = []
         for (let i = 0; i < muveqqetibaza2.length; i++) {
             elaveOlundu.innerHTML +=
